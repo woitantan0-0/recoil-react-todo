@@ -3,7 +3,7 @@ import Todo from './components/todo.jsx';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App is-fluid container">
       <Todo />
     </div>
   );
