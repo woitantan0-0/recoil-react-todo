@@ -1,18 +1,30 @@
 import React from "react";
 import TodoItem from "./todoItem";
 import Input from "./input";
+import Filter from "./filter";
 
 const getKey = () => Math.random().toString(32).substring(2);
 
 const Todo = () => {
-    const [items, setItems] = React.useState([
-        { key: getKey(), text: "APEX", done: false },
-        { key: getKey(), text: "見てないアニメ見る", done: false },
-        { key: getKey(), text: "React勉強", done: false }
-    ]);
+    const [items, setItems] = React.useState([]);
+    const [filter, setFilter] = React.useState("ALL");
+
     const handleAddTodo = text => {
+        // 「...」ってなんだ、、、？
         setItems([...items, { key: getKey(), text, done: false }]);
     };
+
+    const handleFilter = filter => {
+        setFilter(filter);
+    }
+
+    const dispItems = items.filter(item => {
+        if (filter === "ALL") return true;
+        if (filter === "TODO") return !item.done;
+        if (filter === "DONE") return item.done;
+        return true;
+    });
+
     const handleCheck = check => {
         const newItem = items.map(item => {
             if (item.key === check.key) {
@@ -27,8 +39,12 @@ const Todo = () => {
         <div className="panel">
             <div className="panel-heading">✡️ React Todo</div>
             <Input onAdd={handleAddTodo} />
+            <Filter
+                onChangeFilter={handleFilter}
+                value={filter}
+            />
             {
-                items.map(item => (
+                dispItems.map(item => (
                     <TodoItem
                         key={item.key}
                         item={item}
@@ -37,7 +53,7 @@ const Todo = () => {
                 ))
             }
             <div className="panel-block">
-                {items.length} items
+                {dispItems.length} items
             </div>
         </div>
     );

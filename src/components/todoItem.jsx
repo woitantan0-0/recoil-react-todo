@@ -12,7 +12,7 @@ const TodoItem = ({ item, onCheck }) => {
                 checked={item.done}
                 onChange={handleCheckChange}
             />
-            <span className={item.done ? 'has-text-grey-light' : ''} >
+            <span className={item.done ? "has-text-grey-light" : ""} >
                 {item.text}
             </span>
         </label>

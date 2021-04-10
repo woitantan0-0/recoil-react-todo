@@ -2,9 +2,11 @@ import React from "react";
 
 const Input = ({ onAdd }) => {
     const [val, setInput] = React.useState("");
+
     const handleTextChage = e => setInput(e.target.value);
+
     const handleEnter = e => {
-        if (e.key === "Enter") {
+        if (e.keyCode === 13 && val !== "") {
             onAdd(val);
             setInput("");
         }
