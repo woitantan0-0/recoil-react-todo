@@ -37,3 +37,19 @@
     transform: rotate(360deg);
   }
 }
+
+html {
+  background-color: skyblue;
+}
+
+.panel {
+  background-color: #fff;
+}
+
+.panel-tabs a {
+  color: rgb(255, 146, 213);
+}
+
+.panel-tabs a:hover {
+  color: rgb(255, 52, 187);
+}
