@@ -15,7 +15,7 @@ const Input = ({ onAdd }) => {
     return (
         <div className="panel-block">
             <input
-                class="input"
+                className="input"
                 type="text"
                 value={val}
                 placeholder="Enter or add"

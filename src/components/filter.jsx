@@ -2,6 +2,7 @@ import React from "react";
 
 const Filter = ({ value, onChangeFilter }) => {
     const handleClickFilter = (key, e) => {
+        // ↓リンクに飛ばないようにするためのやつかな？
         e.preventDefault();
         onChangeFilter(key);
     }

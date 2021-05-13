@@ -10,7 +10,6 @@ const Todo = () => {
     const [filter, setFilter] = React.useState("ALL");
 
     const handleAddTodo = text => {
-        // 「...」ってなんだ、、、？
         setItems([...items, { key: getKey(), text, done: false }]);
     };
 
@@ -18,6 +17,7 @@ const Todo = () => {
         setFilter(filter);
     }
 
+    // 表示するアイテムを取得する
     const dispItems = items.filter(item => {
         if (filter === "ALL") return true;
         if (filter === "TODO") return !item.done;
@@ -25,6 +25,7 @@ const Todo = () => {
         return true;
     });
 
+    // アイテムのTODO・DONEのステータスを変更する
     const handleCheck = check => {
         const newItem = items.map(item => {
             if (item.key === check.key) {
@@ -33,6 +34,12 @@ const Todo = () => {
             return item;
         });
         setItems(newItem);
+    }
+
+    // 削除アイテムを除いたアイテムをセットする
+    const handleDelete = btn => {
+        const deleteItem = items.filter(item => item.key != btn.key);
+        setItems(deleteItem);
     }
 
     return (
@@ -49,6 +56,7 @@ const Todo = () => {
                         key={item.key}
                         item={item}
                         onCheck={handleCheck}
+                        onDelete={handleDelete}
                     />
                 ))
             }

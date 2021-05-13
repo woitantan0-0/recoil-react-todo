@@ -46,10 +46,6 @@ html {
   background-color: #fff;
 }
 
-.panel-tabs a {
-  color: rgb(255, 146, 213);
-}
-
-.panel-tabs a:hover {
-  color: rgb(255, 52, 187);
+.delete-btn {
+  margin: 0px 30px 0px auto;
 }
