@@ -1,5 +1,5 @@
-import './App.css';
-import Todo from './components/todo.jsx';
+import "./App.css";
+import Todo from "./components/todo.jsx";
 
 const App = () => {
   return (
@@ -7,6 +7,6 @@ const App = () => {
       <Todo />
     </div>
   );
-}
+};
 
 export default App;
