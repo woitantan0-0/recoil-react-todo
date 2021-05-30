@@ -1,32 +1,36 @@
 import React from "react"
+import { useSetRecoilState } from "recoil"
+import { filterState } from "../atoms/Todo"
 
-const Filter = ({ value, onChangeFilter }) => {
+const Filter = filter => {
+  const setFilter = useSetRecoilState(filterState)
+
   const handleClickFilter = (key, e) => {
-    // ↓リンクに飛ばないようにするためのやつかな？
+    // ↓リンクに飛ばないようにするためのやつ？
     e.preventDefault()
-    onChangeFilter(key)
+    setFilter(key)
   }
 
   return (
     <div className="panel-tabs">
       <a
-        href="#"
+        href="#!"
         onClick={handleClickFilter.bind(null, "ALL")}
-        className={value === "ALL" ? "is-active" : ""}
+        className={filter.value === "ALL" ? "is-active" : ""}
       >
         ALL
       </a>
       <a
-        href="#"
+        href="#!"
         onClick={handleClickFilter.bind(null, "TODO")}
-        className={value === "TODO" ? "is-active" : ""}
+        className={filter.value === "TODO" ? "is-active" : ""}
       >
         ToDo
       </a>
       <a
-        href="#"
+        href="#!"
         onClick={handleClickFilter.bind(null, "DONE")}
-        className={value === "DONE" ? "is-active" : ""}
+        className={filter.value === "DONE" ? "is-active" : ""}
       >
         Done
       </a>

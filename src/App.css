@@ -46,6 +46,10 @@ html {
   background-color: #fff;
 }
 
+.todoItem {
+  text-align: left;
+}
+
 .delete-btn {
   margin: 0px 30px 0px auto;
 }
