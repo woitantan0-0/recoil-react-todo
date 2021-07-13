@@ -1,20 +1,25 @@
 import React from "react"
-import { useSetRecoilState } from "recoil"
+import { useRecoilState } from "recoil"
 import { todoState } from "../atoms/Todo"
 
 const getKey = () => Math.random().toString(32).substring(2)
+const APP_KEY = "appTodoList"
 
 const Input = () => {
   const [title, setInput] = React.useState("")
 
-  const setTodos = useSetRecoilState(todoState)
+  const [todoItems, setTodoItems] = useRecoilState(todoState)
+
+  // api接続 => 外部接続しても良い
+  React.useEffect(() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(todoItems))
+  }, [todoItems])
 
   const handleTextChage = e => setInput(e.target.value)
 
   const handleEnter = e => {
-    // 日本語とか入力したら2回打ち込まれるバグあり
     if (e.keyCode === 13 && title !== "") {
-      setTodos(t => {
+      setTodoItems(t => {
         return [...t, { key: getKey(), text: title, done: false }]
       })
       setInput("")

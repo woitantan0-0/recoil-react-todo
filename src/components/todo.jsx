@@ -5,15 +5,9 @@ import TodoItem from "./todoItem"
 import Input from "./input"
 import Filter from "./filter"
 
-const APP_KEY = "appTodoList"
-
 const Todo = () => {
   const todoItems = useRecoilValue(todoState)
   const filter = useRecoilValue(filterState)
-
-  React.useEffect(() => {
-    localStorage.setItem(APP_KEY, JSON.stringify(todoItems))
-  }, [todoItems])
 
   // 表示するアイテムを取得する
   const dispTodoItems = todoItems.filter(item => {
